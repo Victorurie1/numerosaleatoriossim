@@ -1,0 +1,20 @@
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+# Generar 100 números aleatorios entre 0 y 1
+numeros_aleatorios = np.random.uniform(0, 1, 100)
+
+# Realizar la prueba de Kolmogorov-Smirnov (comparar con una distribución uniforme)
+ks_stat, p_value = stats.kstest(numeros_aleatorios, 'uniform')
+
+# Mostrar los resultados
+print(f'Estadístico KS: {ks_stat}')
+print(f'Valor p: {p_value}')
+
+# Graficar los números aleatorios generados
+plt.hist(numeros_aleatorios, bins=10, edgecolor='black', alpha=0.7)
+plt.title('Histograma de 100 números aleatorios')
+plt.xlabel('Valor')
+plt.ylabel('Frecuencia')
+plt.show()
